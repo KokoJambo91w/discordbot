@@ -7,9 +7,7 @@ import io
 import json
 import os
 import asyncio
-from dotenv import load_dotenv
 
-load_dotenv()
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
 NVIDIA_API_KEY = os.environ.get("NVIDIA_API_KEY")
