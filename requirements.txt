@@ -3,3 +3,4 @@ requests
 openai
 google
 google-genai
+PyNaCl
