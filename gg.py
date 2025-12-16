@@ -14,7 +14,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # IMPORTANT: 2.5 does not exist yet. Use 2.0-flash-exp or 1.5-flash.
 # 2.0 is recommended for better search/grounding results.
-MODEL = "gemini-2.0-flash-lite" 
+MODEL = "gemini-robotics-er-1.5-preview" 
 
 # --- Initialize Gemini Client ---
 client_gemini = None
