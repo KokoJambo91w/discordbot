@@ -1,18 +1,24 @@
-# Базовый образ с Python (slim — лёгкий, но с нужными инструментами)
+# 1. Use an official lightweight Python runtime as a parent image
 FROM python:3.11-slim
 
-# Устанавливаем FFmpeg и другие системные зависимости
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ffmpeg && \
-    rm -rf /var/lib/apt/lists/*  # Очистка для уменьшения размера образа
-
-# Устанавливаем зависимости Python
+# 2. Set the working directory in the container
 WORKDIR /app
-COPY requirements.txt ./
+
+# 3. Install system dependencies (THIS IS WHERE WE INSTALL FFMPEG)
+# We update the package list, install ffmpeg, and clean up to keep it small.
+RUN apt-get update && \
+    apt-get install -y ffmpeg && \
+    rm -rf /var/lib/apt/lists/*
+
+# 4. Copy the requirements file into the container
+COPY requirements.txt .
+
+# 5. Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем код бота
+# 6. Copy the rest of your bot's code
 COPY . .
 
-# Команда запуска бота (замените на вашу, например python gg.py)
-CMD ["python", "your_bot_file.py"]  # <-- Укажите здесь имя вашего главного файла
+# 7. Run the bot
+# IMPORTANT: Change 'bot.py' to whatever your main file is named (e.g., main.py)
+CMD ["python", "gg.py"]
